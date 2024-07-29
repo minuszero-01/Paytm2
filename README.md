@@ -1,7 +1,7 @@
 - Clone the repo
 
 ```jsx
-git clone
+git clone https://github.com/minuszero-01/Paytm2.git
 ```
 
 - npm install
