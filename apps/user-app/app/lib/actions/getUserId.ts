@@ -4,6 +4,10 @@ import { authOptions } from "../auth";
 import { getServerSession } from "next-auth";
 
 export async function getId() {
+  interface Getid {
+    amount: number;
+    startTime: Date;
+  }
   const session = await getServerSession(authOptions);
   const onRampData = await prisma.onRampTransaction.findMany({
     where: {
@@ -12,7 +16,7 @@ export async function getId() {
     },
   });
 
-  return onRampData.map((t) => ({
+  return onRampData.map((t: Getid) => ({
     amount: t.amount,
     time: t.startTime,
   }));
