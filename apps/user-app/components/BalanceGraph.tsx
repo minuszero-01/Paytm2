@@ -10,12 +10,9 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { time } from "console";
-import { TrendingUp } from "lucide-react";
 
 const chartConfig = {
   amount: {
@@ -52,7 +49,10 @@ export default async function BalanceGraph({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer className="w-full h-[400px]" config={chartConfig}>
+          <ChartContainer
+            className="mx-auto xl:w-full xl:h-[400px]"
+            config={chartConfig}
+          >
             <LineChart
               accessibilityLayer
               data={chartData}

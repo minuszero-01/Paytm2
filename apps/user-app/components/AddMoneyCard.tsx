@@ -5,8 +5,6 @@ import { Select } from "@repo/ui/select";
 import { useState } from "react";
 import { TextInput } from "@repo/ui/textinput";
 import { createOnRampTransaction } from "../app/lib/actions/createOnrampTransaction";
-import axios from "axios";
-import prisma from "@repo/db/client";
 
 const SUPPORTED_BANKS = [
   {

@@ -16,11 +16,16 @@ export default async function () {
   return (
     <div className=" w-[1300px] ">
       {/* dashboard container */}
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-2 ">
         {/* name */}
-        <div className="text-4xl">Hello, {name?.name}</div>
+        <div className="text-4xl mt-2">
+          Hello,{" "}
+          {name?.name
+            ? name?.name.charAt(0).toUpperCase() + name?.name.slice(1)
+            : null}
+        </div>
         {/* transcation graph */}
-        <div className=" flex flex-col gap-4 w-full h-full">
+        <div className=" flex flex-col gap-2 w-full h-full">
           <div className="m-4 ">
             <BalanceGraph balance={balance1} rampTrans={data1} />
           </div>
