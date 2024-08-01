@@ -28,11 +28,11 @@ export default async function BalanceGraph({
   balance: { amount: number; locked: number };
   rampTrans: { amount: number; time: any }[];
 }) {
-  let initialBalance = 20000 * 100;
+  let initialBalance = 0;
   const values = rampTrans.map((item) => {
     initialBalance += item.amount;
     return {
-      amount: initialBalance / 10000,
+      amount: initialBalance / 100,
       time: new Date(item.time).toISOString(),
     };
   });
