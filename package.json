@@ -2,10 +2,11 @@
   "name": "week-18",
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "build": "prisma generate && turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "postinstall": "prisma generate"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
