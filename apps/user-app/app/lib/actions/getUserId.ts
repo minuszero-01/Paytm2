@@ -15,11 +15,30 @@ export async function getId() {
       status: "Success",
     },
   });
+  const onP2pTransfer = await prisma.p2pTransfer.findMany({
+    where: {
+      fromUserId: Number(session?.user?.id),
+    },
+  });
 
-  return onRampData.map((t: Getid) => ({
+  const dataFromOnRamp = onRampData.map((t: Getid) => ({
     amount: t.amount,
     time: t.startTime,
   }));
+
+  // Step 2: Map over onP2pTransfer to extract amount and startTime.
+  const dataFromOnP2p = onP2pTransfer.map((t) => ({
+    amount: -t.amount,
+    time: t.timestamp, // Use t.startTime if you meant to use the current item's startTime.
+  }));
+
+  const combinedData = [...dataFromOnRamp, ...dataFromOnP2p];
+
+  combinedData.sort(
+    (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()
+  );
+
+  return combinedData;
 }
 
 export async function getBalance() {
